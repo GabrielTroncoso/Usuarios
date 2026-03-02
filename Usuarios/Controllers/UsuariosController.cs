@@ -26,10 +26,9 @@ namespace Json_Demo.Controllers
             };
         }
 
-        // =========================================================
-        // 1) Lista de Contactos
+
         // GET /api/usuarios
-        // =========================================================
+   
         [HttpGet]
         public async Task<IActionResult> GetUsuarios()
         {
@@ -91,10 +90,9 @@ namespace Json_Demo.Controllers
             }
         }
 
-        // =========================================================
-        // 2A) Buscador por ciudad
+
         // GET /api/usuarios/ciudad?nombre={texto}
-        // =========================================================
+
         [HttpGet("ciudad")]
         public async Task<IActionResult> BuscarPorCiudad([FromQuery] string nombre)
         {
@@ -138,11 +136,9 @@ namespace Json_Demo.Controllers
             }
         }
 
-        // =========================================================
-        // 2B) Buscador por cercanía
+
         // GET /api/usuarios/cercanos?lat={lat}&lng={lng}&radio={km}
-        // distancia = sqrt((latU-lat)^2 + (lngU-lng)^2) * 100
-        // =========================================================
+
         [HttpGet("cercanos")]
         public async Task<IActionResult> BuscarCercanos([FromQuery] double lat, [FromQuery] double lng, [FromQuery] double radio)
         {
@@ -199,10 +195,9 @@ namespace Json_Demo.Controllers
             }
         }
 
-        // =========================================================
-        // 3) Tarjeta Profesional
+        
         // GET /api/usuarios/{id}/tarjeta
-        // =========================================================
+      
         [HttpGet("{id:int}/tarjeta")]
         public async Task<IActionResult> Tarjeta(int id)
         {
@@ -272,10 +267,9 @@ namespace Json_Demo.Controllers
             }
         }
 
-        // =========================================================
-        // 4) Directorio Telefónico Inteligente
+  
         // GET /api/usuarios/telefonos
-        // =========================================================
+      
         [HttpGet("telefonos")]
         public async Task<IActionResult> Telefonos()
         {
@@ -310,9 +304,7 @@ namespace Json_Demo.Controllers
             }
         }
 
-        // =========================================================
-        // Helper: traer usuarios desde JSONPlaceholder
-        // =========================================================
+
         private async Task<List<User>> GetUsersFromApi()
         {
             var response = await _httpClient.GetAsync("/users");
@@ -327,9 +319,7 @@ namespace Json_Demo.Controllers
             return users ?? new List<User>();
         }
 
-        // =========================================================
-        // Helpers: formato / parse
-        // =========================================================
+    
         private static bool TieneExtension(string? phone)
         {
             if (string.IsNullOrWhiteSpace(phone)) return false;
